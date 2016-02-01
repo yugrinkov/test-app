@@ -40,9 +40,9 @@ angular.module('starter.controllers', [])
     };
 
     Contracts.add(contract);
-    $scope.contractName = '';
-    $scope.description = '';
-    $scope.budget = '';
+    this.contractName = '';
+    this.description = '';
+    this.budget = '';
 
   }
 });
