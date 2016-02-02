@@ -47,7 +47,7 @@ angular.module('starter.controllers', ['ngCordova'])
     console.log(angular.isString(contract.description));
       var name = angular.isDefined(contract.name),
           description = angular.isDefined(contract.description),
-          budget = angular.isDefined(contract.budget, 10);
+          budget = angular.isDefined(contract.budget);
 
       return name && description && budget
   };
