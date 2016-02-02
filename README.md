@@ -1,25 +1,16 @@
-Ionic App Base
-=====================
+This is test app with ionic framework and simple API for Determine project
 
-A starting project for Ionic that optionally supports using custom SCSS.
-
-## Using this project
-
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
-
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+## How to run
 
 ```bash
-$ npm install -g ionic
+$ cd my-app
+$ npm install
+$ nodejs server.js
+$ ionic serve --address 127.0.0.1  --port 6868
+
 ```
-
-Then run:
-
-```bash
-$ ionic start myProject tabs
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
+After that you can use it in your default browser.
 
 ## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+There is a problem of including  cordova-plugin-file-transfer in  project.
+Made it as described here: http://www.gajotres.net/using-cordova-file-transfer-plugin-with-ionic-framework/ but it's does not working now.
