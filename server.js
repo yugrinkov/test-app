@@ -6,6 +6,10 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 var app        = express();
 var morgan     = require('morgan');
+var cors = require('cors');
+
+
+app.use(cors());
 
 // configure app
 app.use(morgan('dev')); // log requests to the console
@@ -68,7 +72,7 @@ var router = express.Router();
 router.use(function(req, res, next) {
 	// do logging
 	console.log('Something is happening.');
-	next();
+  next();
 });
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/service)
@@ -78,16 +82,33 @@ router.get('/', function(req, res) {
 
 // on routes that end in /bears
 // ----------------------------------------------------
-router.route('/contracts/get')
+router.route('/contract')
 
 	// get all the contracts (accessed at GET http://localhost:8080/service/get)
 	.get(function(req, res) {
 			res.json(contracts);
-	});
+	})
+  // create a contract (accessed at PUT http://localhost:8080/contracts)
+  .post(function(req, res) {
+
+    var contract = {
+      contractId: contracts.length + 1,
+      name: req.body.name,
+      description: req.body.description,
+      budget: req.body.budget,
+      currencyOfBudget: req.body.currencyOfBudget,
+      createdDate: new Date(),
+      document: '/url/default'
+  };		// create a new instance
+
+  contracts.push(contract);
+  res.json({ message: 'Contract created!', contractId: contracts.length});
+
+  });
 
 // on routes that end in /get/:contractId
 // ----------------------------------------------------
-router.route('/contracts/get/:contractId')
+router.route('/contract/:contractId')
 
 	// get the contract with that id
 	.get(function(req, res) {
@@ -106,26 +127,6 @@ router.route('/contracts/get/:contractId')
     });
 
 	});
-
-router.route('/contracts/')
-
-  // create a contract (accessed at POST http://localhost:8080/contracts)
-  .put(function(req, res) {
-
-    var contract = {
-      contractId: req.body.contractId,
-      name: req.body.name,
-      description: req.body.description,
-      budget: req.body.budget,
-      currencyOfBudget: req.body.currencyOfBudget,
-      createdDate: new Date(),
-      document: '/url/default'
-    };		// create a new instance
-
-    contracts.push(contract);
-    res.json({ message: 'Contract created!' });
-
-  });
 
 
 // REGISTER OUR ROUTES -------------------------------

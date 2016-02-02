@@ -6,15 +6,16 @@
 -->
 <ion-view view-title="{{contract.name}}">
   <ion-content class="padding">
+    <ul class="list">
+      <li class="item"><strong>Name:</strong> {{contract.name}}</li>
+      <li class="item"><strong>Budget:</strong> {{contract.budget + ' ' + contract.currencyOfBudget}}</li>
+      <li class="item"><strong>Created:</strong> {{contract.createdDate | date: 'MM/dd/yyyy' }}</li>
+      <li class="item"><strong>Document:</strong> {{contract.document}}</li>
+    </ul>
     <div class="card">
       <div class="item item-text-wrap">
         {{contract.description}}
       </div>
     </div>
-    <ul class="list">
-      <li class="item"><strong>Budget:</strong> {{contract.budget + ' ' + contract.currencyOfBudget}}</li>
-      <li class="item"><strong>Created:</strong> {{contract.createdDate | date: 'MM/dd/yyyy' }}</li>
-      <li class="item"><strong>Document:</strong> {{contract.document}}</li>
-    </ul>
   </ion-content>
 </ion-view>

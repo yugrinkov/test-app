@@ -1,18 +1,12 @@
 angular.module('starter.controllers', [])
 
 .controller('ContractCtrl', function($scope, Contracts) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
   $scope.contracts = Contracts.all();
-  $scope.remove = function(chat) {
-    Contracts.remove(chat);
+
+  $scope.remove = function(contract) {
+    Contracts.remove(contract);
   };
+
 })
 
 .controller('ContractDetailCtrl', function($scope, $stateParams, Contracts) {
@@ -28,9 +22,9 @@ angular.module('starter.controllers', [])
   $scope.currency = 'RUB';
 
   $scope.submit = function(){
+    var self = this;
 
     var contract = {
-      contractId: Contracts.all().length + 1,
       name: this.contractName,
       description: this.description,
       budget: this.budget,
@@ -40,9 +34,10 @@ angular.module('starter.controllers', [])
     };
 
     Contracts.add(contract);
-    this.contractName = '';
-    this.description = '';
-    this.budget = '';
+
+    self.contractName = '';
+    self.description = '';
+    self.budget = '';
 
   }
 });
