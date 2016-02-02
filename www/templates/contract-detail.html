@@ -10,7 +10,7 @@
       <li class="item"><strong>Name:</strong> {{contract.name}}</li>
       <li class="item"><strong>Budget:</strong> {{contract.budget + ' ' + contract.currencyOfBudget}}</li>
       <li class="item"><strong>Created:</strong> {{contract.createdDate | date: 'MM/dd/yyyy' }}</li>
-      <li class="item"><strong>Document:</strong> {{contract.document}}</li>
+      <li class="item download"><button class="button icon-left ion-arrow-down-a button-positive" ng-click="testFileDownload()">Download document</button></li>
     </ul>
     <div class="card">
       <div class="item item-text-wrap">

@@ -1,1 +1,5 @@
 /* Empty. Add your own CSS if you like */
+.platform-ios .download,
+.platform-browser .download {
+  display: none;
+}
