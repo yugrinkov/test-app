@@ -1,4 +1,4 @@
-This is test app with ionic framework and simple API for Determine project
+This is test app with ionic framework and simple API
 
 ## How to run
 
