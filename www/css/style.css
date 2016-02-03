@@ -2,3 +2,8 @@
 .platform-ios .download {
   display: none;
 }
+
+.contract-form .help-block {
+  color: #ff0000
+}
+

@@ -1,25 +1,41 @@
 <ion-view view-title="New Contract">
   <ion-content class="padding">
-    <div class="list">
+
+    <form name="form.contract" class="contract-form" ng-submit="submitForm(form_data)" novalidate>
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Name</span>
-        <input type="text" ng-model="contractName" placeholder="Contract Name">
+        <input type="text" name="contractName" ng-model="form_data.contractName" placeholder="Contract Name" required>
+        <p ng-show="form.contract.contractName.$invalid && !form.contract.contractName.$pristine" class="help-block">
+          Contract name is required.</p>
       </label>
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Budget</span>
-        <input type="number" ng-model="budget" placeholder="10000">
+        <input name="budget" type="number" ng-model="form_data.budget" placeholder="10000" required>
+        <p ng-show="form.contract.budget.$invalid && !form.contract.budget.$pristine" class="help-block">Budget is
+          required.</p>
       </label>
+
       <label class="item item-input item-select">
         <div class="input-label">Budget currency</div>
-        <select class="form-control" ng-model="currency">
-          <option ng-selected="defCurrency == item.value" ng-repeat="item in currencies" ng-value="item.value">{{item.label}}</option>
+        <select name="currency" class="form-control" ng-model="form_data.currency" required>
+          <option ng-repeat="item in currencies" ng-value="item.value">{{item.label}}</option>
         </select>
+        <p ng-show="form.contract.currency.$invalid && !form.contract.currency.$pristine" class="help-block">Currency is
+          required.</p>
       </label>
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Contract description</span>
-      	<textarea ng-model="description" rows="8" cols="10"></textarea>
+        <textarea name="description" ng-model="form_data.description" rows="8" cols="10" ng-minlength="10"
+                  ng-maxlength="255" required></textarea>
+        <p ng-show="form.contract.description.$error.minlength" class="help-block">Description is too short.</p>
+        <p ng-show="form.contract.description.$error.maxlength" class="help-block">Description is too long.</p>
       </label>
-    </div>
-    <button class="button button-block button-positive" ng-click="submit()">Submit</button>
+
+      <button class="button button-block button-positive" ng-disabled="form.contract.$invalid">Submit</button>
+
+    </form>
   </ion-content>
 </ion-view>

@@ -35,41 +35,32 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('ContractAddCtrl', function($scope, Contracts){
+.controller('ContractAddCtrl', function($scope, $location, Contracts){
+  $scope.form = {};
+  $scope.form_data = {};
   $scope.currencies = [
     { label: 'USD', value: 'USD' },
     { label: 'UAH', value: 'UAH' },
     { label: 'RUB', value: 'RUB' }
   ];
-  $scope.currency = 'RUB';
 
-  $scope.isValid = function(contract){
-    console.log(angular.isString(contract.description));
-      var name = angular.isDefined(contract.name),
-          description = angular.isDefined(contract.description),
-          budget = angular.isDefined(contract.budget);
+  $scope.submitForm = function(formData){
 
-      return name && description && budget
-  };
+         var contract = {
+              name: formData.contractName,
+              description: formData.description,
+              budget: formData.budget,
+              currencyOfBudget: formData.currency,
+              createdDate: new Date(),
+              document: 'some/url'
+         };
 
-  $scope.submit = function(){
-    var self = this;
+         Contracts.add(contract);
 
-    var contract = {
-      name: this.contractName,
-      description: this.description,
-      budget: this.budget,
-      currencyOfBudget: this.currency,
-      createdDate: new Date(),
-      document: 'some/url'
-    };
+         $scope.form_data = {};
+         $scope.form.contract.$setPristine();
+         $location.path( "/tab/contracts" );
 
-    if (this.isValid(contract)){
-      Contracts.add(contract);
 
-      this.contractName = '';
-      this.description = '';
-      this.budget = '';
-    }
   }
 });
