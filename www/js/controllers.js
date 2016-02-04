@@ -11,27 +11,31 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('ContractDetailCtrl', function($scope, $stateParams, Contracts, $cordovaFileTransfer) {
   $scope.contract = Contracts.get($stateParams.contractId);
+  $scope.isClick = false;
 
-  /*$scope.testFileDownload = function(){
-
+  $scope.download = function(){
 
     // File for download
-    var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
+    var url = $scope.contract.document;
 
     // File name only
     var filename = url.split("/").pop();
 
     // Save location
-   // var targetPath = cordova.file.externalRootDirectory + filename;
+    var targetPath = cordova.file.applicationStorageDirectory + filename;
 
-    $cordovaFileTransfer.download(url, filename, {}, true).then(function (result) {
-      console.log('Success');
+    $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
+      $scope.isLoad = true;
+      $scope.isLoadingDoc = false;
+
     }, function (error) {
-      console.log('Error');
+      $scope.isClick = true;
+      $scope.isLoad = false;
+      $scope.isLoadingDoc = false;
     }, function (progress) {
-      // PROGRESS HANDLING GOES HERE
+        $scope.isLoadingDoc = true;
     });
-  } */
+  }
 
 })
 
@@ -60,7 +64,5 @@ angular.module('starter.controllers', ['ngCordova'])
          $scope.form_data = {};
          $scope.form.contract.$setPristine();
          $location.path( "/tab/contracts" );
-
-
   }
 });

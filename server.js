@@ -40,16 +40,16 @@ var contracts = [{
     budget: 25000,
     currencyOfBudget: 'UAH',
     createdDate: new Date(),
-    document: '/url/data1'
+    document: 'http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf'
   },
   {
     contractId: 2,
     name: 'Sales Contract',
     description: 'A sales contract documents the terms of a sales transaction between a seller and a buyer. The contract should identify the product sold, the quantity, pricing, payment terms, quality standards and delivery terms. Additionally, the parties may specify any insurance requirements, termination provisions and the process for resolving disputes.',
     budget: 20000,
-    currencyOfBudget: 'UAH',
+    currencyOfBudget: 'USD',
     createdDate: new Date(),
-    document: '/url/data2'
+    document: 'http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf'
   },
   {
     contractId: 3,
@@ -58,7 +58,7 @@ var contracts = [{
     budget: 21550,
     currencyOfBudget: 'UAH',
     createdDate: new Date(),
-    document: '/url/data3'
+    document: 'http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf'
   }
 ];
 
@@ -80,7 +80,7 @@ router.get('/', function(req, res) {
 	res.json({ message: 'hooray! welcome to our api!' });
 });
 
-// on routes that end in /bears
+// on routes that end in /contract
 // ----------------------------------------------------
 router.route('/contract')
 
@@ -98,7 +98,7 @@ router.route('/contract')
       budget: req.body.budget,
       currencyOfBudget: req.body.currencyOfBudget,
       createdDate: new Date(),
-      document: '/url/default'
+      document: 'http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf'
   };		// create a new instance
 
   contracts.push(contract);

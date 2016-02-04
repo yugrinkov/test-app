@@ -1,5 +1,5 @@
-/* Empty. Add your own CSS if you like */
-.platform-ios .download {
+.platform-ios .download,
+.platform-browser .download {
   display: none;
 }
 
@@ -7,3 +7,21 @@
   color: #ff0000
 }
 
+.download .status{
+  line-height: 45px;
+}
+
+.download .success.status{
+  color: #008800;
+}
+
+.download .error.status{
+  color: #ff0000;
+}
+
+.download .spinner > * {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}

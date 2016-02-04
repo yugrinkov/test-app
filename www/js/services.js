@@ -3,7 +3,8 @@ angular.module('starter.services', ['ngResource'])
   .factory('Contracts', function ($resource) {
     // Might use a resource here that returns a JSON array
 
-    var resourse = $resource('http://localhost:8080/service/contract/:contractId', {contractId: '@_id'}),
+    // Please for test on android do not use localhost or 127.0.0.1
+    var resourse = $resource('http://192.168.0.103:8080/service/contract/:contractId', {contractId: '@_id'}),
       contracts = [];
 
     return {

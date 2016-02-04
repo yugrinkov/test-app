@@ -10,7 +10,12 @@
       <li class="item"><strong>Name:</strong> {{contract.name}}</li>
       <li class="item"><strong>Budget:</strong> {{contract.budget + ' ' + contract.currencyOfBudget}}</li>
       <li class="item"><strong>Created:</strong> {{contract.createdDate | date: 'MM/dd/yyyy' }}</li>
-      <li class="item download"><button class="button icon-left ion-arrow-down-a button-positive" ng-click="testFileDownload()">Download document</button></li>
+      <li class="item download">
+        <button class="button icon-left ion-arrow-down-a button-positive" ng-click="download()">Download document</button>
+        <ion-spinner  ng-show="isLoadingDoc"></ion-spinner>
+        <span class="status success" ng-show="isLoad && !isLoadingDoc">Success!</span>
+        <span class="status error" ng-show="isClick && !isLoad && !isLoadingDoc">Failed!</span>
+      </li>
     </ul>
     <div class="card">
       <div class="item item-text-wrap">
