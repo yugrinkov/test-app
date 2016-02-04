@@ -4,7 +4,7 @@ angular.module('starter.services', ['ngResource'])
     // Might use a resource here that returns a JSON array
 
     // Please for test on android do not use localhost or 127.0.0.1
-    var resourse = $resource('http://192.168.0.103:8080/service/contract/:contractId', {contractId: '@_id'}),
+    var resourse = $resource('http://localhost:8080/service/contract/:contractId', {contractId: '@_id'}),
       contracts = [];
 
     return {
